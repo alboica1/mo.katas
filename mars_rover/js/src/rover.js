@@ -1,4 +1,4 @@
-const Mars = require('../src/Mars');
+const Mars = require('./mars');
 
 class Rover {
   planet = new Mars()
@@ -24,43 +24,12 @@ class Rover {
           this.x = this.nextPos.x
           this.y = this.nextPos.y
         }
-      } else if (m === "l") {
-        switch(this.orientation) {
-          case 'N':
-            this.orientation = 'W'
-            break;
-          case 'S':
-            this.orientation = 'E'
-            break;
-          case 'E':
-            this.orientation = 'N'
-            break;
-          case 'W':
-            this.orientation = 'S'
-            break;
-          default:
-            // code block
-        }
-      } else if (m === "r") {
-        switch(this.orientation) {
-          case 'N':
-            this.orientation = 'E'
-            break;
-          case 'S':
-            this.orientation = 'W'
-            break;
-            case 'E':
-              this.orientation = 'S'
-              break;
-          case 'W':
-            this.orientation = 'N'
-            break;
-          default:
-             // code block
-          }
+      } else if (m === "l" || m === "r") {
+        this.orientation = this.calcOrientation(m)
       }
     })
   }
+
   calcNextPos(move) {
     if (move == 'f') {
       switch (this.orientation){
@@ -87,6 +56,38 @@ class Rover {
         default:
       }
     } else{
+      return -1
+    }
+  }
+  
+  calcOrientation(orient) {
+    if (orient === "l") {
+      switch(this.orientation) {
+        case 'N':
+          return 'W'
+        case 'S':
+          return 'E'
+        case 'E':
+          return 'N'
+        case 'W':
+          return 'S'
+        default:
+          // code block
+      }
+    } else if ( orient=== "r") {
+      switch(this.orientation) {
+        case 'N':
+          return 'E'
+        case 'S':
+          return 'W'
+          case 'E':
+          return 'S'
+        case 'W':
+          return 'N'
+        default:
+           // code block
+        }
+    } else {
       return -1
     }
   }

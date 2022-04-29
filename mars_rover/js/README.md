@@ -4,6 +4,14 @@
 
 You're part of the team that explores Mars by sending remotely controlled vehicles to the surface of the planet. Develop an API that translates the commands sent from earth to instructions that are understood by the rover.
 
+## Solution comments
+
+About the planet:
+A new class was created to simulate Mars containing those objects inside the planet that the rover can find.
+
+About facing an object:
+Once the rover finds an obstacle, stopps and send a missage. The missage sent is represented as a message shown on the terminal.
+
 ## Requirements
 You are given the initial starting point (x,y) of a rover and the direction (N,S,E,W) it is facing.
 The rover receives a character array of commands.

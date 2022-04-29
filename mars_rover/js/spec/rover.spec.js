@@ -51,6 +51,7 @@ describe('Rover', () => {
       expect(rover.orientation).toEqual('N')
     })
   });
+
   describe('turns to', () => {
     it('the right', () => {
       let planet  = new Mars(3,3,[{x:1, y:1}])
@@ -62,6 +63,7 @@ describe('Rover', () => {
       expect(rover.y).toEqual(0)
       expect(rover.orientation).toEqual('E')
     })
+
     it('the left', () => {
       let planet  = new Mars(3,3,[{x:1, y:1}])
       let rover = new Rover(0, 0, 'N', planet)
@@ -83,11 +85,12 @@ describe('Rover', () => {
       expect(rover.y).toEqual(2)
       expect(rover.orientation).toEqual('S')
     })
+    
     it('until finding an obstacle', () => {
       let planet  = new Mars(3,3,[{x:1, y: 0}, {x:2, y:2}])
-      let rover = new Rover(0, 0, 'N', planet)
+      let rover = new Rover(1, 1, 'N', planet)
 
-      rover.move(['f','f','r','f','f'])
+      rover.move(['f','r','f'])
 
       expect(rover.x).toEqual(1)
       expect(rover.y).toEqual(2)
@@ -95,5 +98,4 @@ describe('Rover', () => {
       expect(rover.stopped).toEqual(true)
     })
   });
-
 })
